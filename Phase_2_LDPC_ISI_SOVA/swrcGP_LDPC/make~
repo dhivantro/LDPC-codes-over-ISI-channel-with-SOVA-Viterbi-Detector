@@ -1,0 +1,22 @@
+# Compile the C code and make sure it can execute using valgrind
+vg="valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes"
+make -f Makefile_swrcGP_LDPC && ./swrcGP_LDPC -0 "setParm(*N=340;*K=110*minNumberOfFrameErrors=200;*minNumberOfFrames=1000;*maxNumberOfFrames=3000);" -1 "setParm(*N_row_H=230;*N_col_H=340);" -2 "setParm(*SNR=14);" -4 "setParm(*N_row_H=230;*N_col_H=340);"  -r
+
+# Create the documentation with doxygen
+#doxygen swrcGP_LDPC.doxy.cfg
+
+# Compile the C code and run using valgrind. User must supply needed parameters for running.
+# make -f Makefile_swrcGP_LDPC && $vg ./swrcGP_LDPC -r
+
+# Iterate sequentially over the SNR running the program at different SNRs
+#rm -f swrcGP_LDPC.berResult
+#for SNR in {6..12}
+#do
+#    ./swrcGP_LDPC -0 "setParm(*minNumberOfFrames=50,*minNumberOfFrameErrors=50)" -1 "setParm(*h=[1,2,2,1],*SNR=$SNR,*gbLen=3)" -r
+#done
+
+# Generate the swrcGP_LDPC.tex file and typeset it
+#./plotBERResult.pl -t -x AWGNSNR -y BER -w CWL swrcGP_LDPC.berResult
+# pdflatex swrcGP_LDPC.tex; rm -f swrcGP_LDPC.out swrcGP_LDPC.aux swrcGP_LDPC.log swrcGP_LDPC.nav swrcGP_LDPC.snm swrcGP_LDPC.toc swrcGP_LDPC.vrb
+   
+#rm -f swrcGP_LDPC.cfg; rm -f swrcGP_LDPC.berResult*
