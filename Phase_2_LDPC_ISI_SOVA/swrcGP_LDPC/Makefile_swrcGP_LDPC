@@ -1,8 +1,0 @@
-CC    = gcc
-FLAGS = -O3 -fopenmp -Wno-unused-result
-FLAGS = -g -fopenmp
-ALL:    swrcGP_LDPC clean
-swrcGP_LDPC: swrcGP_LDPC.c swrcGP_LDPC.h ../modules/encoder/GP_LDPCEncoder/GP_LDPCEncoder.c ../modules/channel/GP_ISIChannel/GP_ISIChannel.c ../modules/detector/GP_Viterbi/GP_Viterbi.c ../modules/decoder/GP_LDPCDecoder/GP_LDPCDecoder.c ../modules/SWRC.c ../modules/berResult/berResult.c ../modules/encoder/GP_LDPCEncoder/GP_LDPCEncoder.h ../modules/channel/GP_ISIChannel/GP_ISIChannel.h ../modules/detector/GP_Viterbi/GP_Viterbi.h ../modules/decoder/GP_LDPCDecoder/GP_LDPCDecoder.h ../modules/SWRC.h ../modules/berResult/berResult.h Makefile_swrcGP_LDPC make
-	$(CC) $(FLAGS) -Wno-unused-result swrcGP_LDPC.c ../modules/encoder/GP_LDPCEncoder/GP_LDPCEncoder.c ../modules/channel/GP_ISIChannel/GP_ISIChannel.c ../modules/detector/GP_Viterbi/GP_Viterbi.c ../modules/decoder/GP_LDPCDecoder/GP_LDPCDecoder.c ../modules/SWRC.c ../modules/berResult/berResult.c -lgsl -lgslcblas -lm -o swrcGP_LDPC
-clean:
-	rm -f *.o # *~ 
